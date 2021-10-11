@@ -8,7 +8,7 @@ namespace Inviduellt_Projekt
         static void Main(string[] args)
         {
             Console.WriteLine("Hej! Välkommen till banken!");
-            bool MinBool = true;
+            
             //List with alla users
             var Users = new List<string> { "Daniel", "Martin", "Christian", "Neo", "Jennie" };//https://channel9.msdn.com/Series/CSharp-101/CSharp-Sort-Search-and-Index-Lists                
             string[] Passwords = { "1234", "2345", "3456", "4567", "5678" };
@@ -26,8 +26,9 @@ namespace Inviduellt_Projekt
             double[] BalanceNeo = { 5846.23, 186146, 15136 };
 
             string[] Jennie = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceJennie = { 1353.15, 15864, 1561, 23 };
+            double[] BalanceJennie = { 1353.15, 15864, 1561, 23.25 };
 
+            bool MinBool = true;
             while (MinBool)
             {
                 Console.Write("Var god ange ditt användarnamn: ");
@@ -116,26 +117,26 @@ namespace Inviduellt_Projekt
                                                 Console.Write("[" + (j + 1) + "]" + Daniel[j]);
                                                 Console.WriteLine(": " + BalanceDaniel[j] + " kr");
                                             }
-                                            Console.WriteLine("Vilket konto vill du ta pengar från?");
+                                            Console.WriteLine("Vilket konto vill du flytta pengar från?");
                                             int.TryParse(Console.ReadLine(), out int accountChoice);
 
                                             switch (accountChoice)
                                             {
 
                                                 case 1:
-                                                    int indexaccount = 0;
+                                                    int indexaccount = Convert.ToInt32(Console.ReadLine());
                                                     Console.WriteLine(BalanceDaniel[indexaccount]);
                                                     Console.WriteLine("Hur mycket vill du flytta? ");
-                                                    int amount1 = Convert.ToInt32(Console.ReadLine());
+                                                    double amount1 = Convert.ToDouble(Console.ReadLine());
                                                     Console.WriteLine("Vilket konto vill du flytta till?");
                                                     int fromAccount = Convert.ToInt32(Console.ReadLine())-1;
                                                     Console.WriteLine("Här är de nya saldona");
                                                     BalanceDaniel[indexaccount] = BalanceDaniel[indexaccount] - amount1;
                                                     BalanceDaniel[fromAccount] = BalanceDaniel[fromAccount] + amount1;
                                                     Console.WriteLine(Daniel[indexaccount]);
-                                                    Console.WriteLine(BalanceDaniel[indexaccount]);
+                                                    Console.WriteLine(BalanceDaniel[indexaccount]+ " kr");
                                                     Console.WriteLine(Daniel[fromAccount]);
-                                                    Console.WriteLine(BalanceDaniel[fromAccount]);
+                                                    Console.WriteLine(BalanceDaniel[fromAccount]+" kr");
                                                     break;
 
                                                 case 2:
@@ -144,9 +145,14 @@ namespace Inviduellt_Projekt
                                                     Console.WriteLine("Hur mycket vill du flytta? ");
                                                     int amount2 = Convert.ToInt32(Console.ReadLine());
                                                     Console.WriteLine("Vilket konto vill du flytta till?");
+                                                    int fromAccount2 = Convert.ToInt32(Console.ReadLine()) - 1;
                                                     Console.WriteLine("Här är de nya saldona");
                                                     BalanceDaniel[indexaccount1] = BalanceDaniel[indexaccount1] - amount2;
-                                                    Console.WriteLine(BalanceDaniel[indexaccount1]);
+                                                    BalanceDaniel[fromAccount2] = BalanceDaniel[fromAccount2] + amount2;
+                                                    Console.WriteLine(Daniel[indexaccount1]);
+                                                    Console.WriteLine(BalanceDaniel[indexaccount1]+ " kr");
+                                                    Console.WriteLine(Daniel[fromAccount2]);
+                                                    Console.WriteLine(BalanceDaniel[fromAccount2]+ " kr");
                                                     break;
 
 
@@ -156,9 +162,14 @@ namespace Inviduellt_Projekt
                                                     Console.WriteLine("Hur mycket vill du flytta? ");
                                                     int amount3 = Convert.ToInt32(Console.ReadLine());
                                                     Console.WriteLine("Vilket konto vill du flytta till?");
+                                                    int fromAccount3 = Convert.ToInt32(Console.ReadLine()) - 1;
                                                     Console.WriteLine("Här är de nya saldona");
                                                     BalanceDaniel[indexaccount2] = BalanceDaniel[indexaccount2] - amount3;
-                                                    Console.WriteLine(BalanceDaniel[2]);
+                                                    BalanceDaniel[fromAccount3] = BalanceDaniel[fromAccount3] + amount3;
+                                                    Console.WriteLine(Daniel[indexaccount2]);
+                                                    Console.WriteLine(BalanceDaniel[indexaccount2]);
+                                                    Console.WriteLine(Daniel[fromAccount3]);
+                                                    Console.WriteLine(BalanceDaniel[fromAccount3]);
                                                     break;
 
                                                 default:
@@ -194,47 +205,8 @@ namespace Inviduellt_Projekt
                 }
             }
         }
-        static void MoneyTransfer()
-        {
-            string[] Daniel = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceDaniel = { 1235.54, 1531, 1562 };
+        //Metod
 
-            string[] Martin = { "Lönekonto", "Sparkonto", "Buffert", "Pension" };
-            double[] BalanceMartin = { 486.12, 145861, 15610, 14 };
-
-            string[] Christian = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceChristian = { 516.32, 1561, 1515.61 };
-
-            string[] Neo = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceNeo = { 5846.23, 186146, 15136 };
-
-            string[] Jennie = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceJennie = { 1353.15, 15864, 1561, 23 };
-
-            Console.WriteLine("Överföring mellan konton");
-            for (int j = 0; j < Daniel.Length; j++)
-            {
-                Console.Write("[" + (j + 1) + "]" + Daniel[j]);
-                Console.WriteLine(": " + BalanceDaniel[j] + " kr");
-            }
-            Console.WriteLine("Hur mycket vill du flytta? ");
-            int amount3 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Vilket konto vill du flytta till?");
-
-            Console.WriteLine("Här är de nya saldona");
-            BalanceDaniel[0] = BalanceDaniel[0] - amount3;
-            Console.WriteLine(BalanceDaniel[0]);
-
-
-        }
-
-        //static void withdrawMoney()
-        //{
-
-        //}
-        //public static int IndexOf(Array array, object? value);
-        //{
-        //Console.WriteLine("index");
-        //}
+        
     }
 }

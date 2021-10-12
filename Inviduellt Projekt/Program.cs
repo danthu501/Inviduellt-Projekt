@@ -354,6 +354,195 @@ namespace Inviduellt_Projekt
                                             break;
                                         case 3:
                                             Console.WriteLine("Ta ut pengar");
+                                            if (User == "Daniel")
+                                            {
+                                                for (int j = 0; j < Daniel.Length; j++)
+                                                {
+                                                    Console.Write("[" + j + "]" + Daniel[j]);
+                                                    Console.WriteLine(": " + BalanceDaniel[j] + " kr");
+                                                }
+
+                                                try
+                                                {
+                                                    Console.WriteLine("Vilket konto vill du ta ut pengar från? (ange siffran som står inom[])");
+                                                    int indexaccount = Convert.ToInt32(Console.ReadLine());
+                                                    try
+                                                    {
+                                                        Console.WriteLine(BalanceDaniel[indexaccount]);
+                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
+                                                        double amount = Convert.ToDouble(Console.ReadLine());
+                                                        Console.Write("Var god ange din pinkod: ");
+                                                        string GivenPin = Console.ReadLine();
+
+
+                                                        if (GivenPin == Passwords[index])
+                                                        {
+                                                            Console.WriteLine("Här är de nya saldot: ");
+                                                            BalanceDaniel[indexaccount] = BalanceDaniel[indexaccount] - amount;
+                                                            Console.WriteLine(Daniel[indexaccount]);
+                                                            Console.WriteLine(BalanceDaniel[indexaccount] + " kr");
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.WriteLine("Du angav fel pinkod");
+                                                        }
+                                                              
+
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("Du måste ange en giltig siffra");
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Du måste ange en giltig siffra");
+                                                }
+
+
+                                            }
+                                            if (User == "Martin")
+                                            {
+                                                for (int j = 0; j < Martin.Length; j++)
+                                                {
+                                                    Console.Write("[" + j + "]" + Martin[j]);
+                                                    Console.WriteLine(": " + BalanceMartin[j] + " kr");
+                                                }
+
+                                                try
+                                                {
+                                                    Console.WriteLine("Vilket konto vill du ta ut pengar från? (ange siffran som står inom[])");
+                                                    int indexaccount = Convert.ToInt32(Console.ReadLine());
+                                                    try
+                                                    {
+                                                        Console.WriteLine(BalanceMartin[indexaccount]);
+                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
+                                                        double amount = Convert.ToDouble(Console.ReadLine());
+                                                        Console.WriteLine("Här är de nya saldot");
+                                                        BalanceMartin[indexaccount] = BalanceMartin[indexaccount] - amount;
+                                                        Console.WriteLine(Martin[indexaccount]);
+                                                        Console.WriteLine(BalanceMartin[indexaccount] + " kr");
+                                            
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("Du måste ange en giltig siffra");
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Du måste ange en giltig siffra");
+                                                }
+
+
+                                            }
+                                            if (User == "Christian")
+                                            {
+                                                for (int j = 0; j < Christian.Length; j++)
+                                                {
+                                                    Console.Write("[" + j + "]" + Christian[j]);
+                                                    Console.WriteLine(": " + BalanceChristian[j] + " kr");
+                                                }
+
+                                                try
+                                                {
+                                                    Console.WriteLine("Vilket konto vill du ta ut pengar från? (ange siffran som står inom[])");
+                                                    int indexaccount = Convert.ToInt32(Console.ReadLine());
+                                                    try
+                                                    {
+                                                        Console.WriteLine(BalanceChristian[indexaccount]);
+                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
+                                                        double amount = Convert.ToDouble(Console.ReadLine());
+                                                        Console.WriteLine("Här är de nya saldot");
+                                                        BalanceChristian[indexaccount] = BalanceChristian[indexaccount] - amount;
+                                                        Console.WriteLine(Christian[indexaccount]);
+                                                        Console.WriteLine(BalanceChristian[indexaccount] + " kr");
+                                                                                                                   
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("Du måste ange en giltig siffra");
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Du måste ange en giltig siffra");
+                                                }
+
+
+                                            }
+                                            if (User == "Neo")
+                                            {
+                                                for (int j = 0; j < Neo.Length; j++)
+                                                {
+                                                    Console.Write("[" + j + "]" + Neo[j]);
+                                                    Console.WriteLine(": " + BalanceNeo[j] + " kr");
+                                                }
+
+                                                try
+                                                {
+                                                    Console.WriteLine("Vilket konto vill du ta ut pengar från? (ange siffran som står inom[])");
+                                                    int indexaccount = Convert.ToInt32(Console.ReadLine());
+                                                    try
+                                                    {
+                                                        Console.WriteLine(BalanceNeo[indexaccount]);
+                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
+                                                        double amount = Convert.ToDouble(Console.ReadLine());
+                                                        Console.WriteLine("Här är de nya saldot");
+                                                        BalanceNeo[indexaccount] = BalanceNeo[indexaccount] - amount;
+                                                        Console.WriteLine(Neo[indexaccount]);
+                                                        Console.WriteLine(BalanceNeo[indexaccount] + " kr");
+
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("Du måste ange en giltig siffra");
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Du måste ange en giltig siffra");
+                                                }
+
+
+                                            }
+                                            if (User == "Jennie")
+                                            {
+                                                for (int j = 0; j < Jennie.Length; j++)
+                                                {
+                                                    Console.Write("[" + j + "]" + Jennie[j]);
+                                                    Console.WriteLine(": " + BalanceJennie[j] + " kr");
+                                                }
+
+                                                try
+                                                {
+                                                    Console.WriteLine("Vilket konto vill du ta ut pengar från? (ange siffran som står inom[])");
+                                                    int indexaccount = Convert.ToInt32(Console.ReadLine());
+                                                    try
+                                                    {
+                                                        Console.WriteLine(BalanceJennie[indexaccount]);
+                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
+                                                        double amount = Convert.ToDouble(Console.ReadLine());
+
+                                                        Console.WriteLine("Här är de nya saldot: ");
+                                                        BalanceJennie[indexaccount] = BalanceJennie[indexaccount] - amount;
+                                                        Console.WriteLine(Jennie[indexaccount]);
+                                                        Console.WriteLine(BalanceJennie[indexaccount] + " kr");
+
+
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("Du måste ange en giltig siffra");
+                                                    }
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Du måste ange en giltig siffra");
+                                                }
+
+
+                                            }
 
                                             break;
                                         case 4:
@@ -434,7 +623,6 @@ namespace Inviduellt_Projekt
 
         }
 
-   
-
+        
     }
 }

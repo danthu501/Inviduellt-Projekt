@@ -11,7 +11,7 @@ namespace Inviduellt_Projekt
 
             //List with alla users
             var Users = new List<string> { "Daniel", "Martin", "Christian", "Neo", "Jennie" };//https://channel9.msdn.com/Series/CSharp-101/CSharp-Sort-Search-and-Index-Lists                
-            string[] Passwords = { "1234", "2345", "3456", "4567", "5678" };
+            //Pin inside method checkPin
 
             string[] Daniel = { "Lönekonto", "Sparkonto", "Buffert" };
             double[] BalanceDaniel = { 1235.54, 1531, 1562 };
@@ -34,8 +34,7 @@ namespace Inviduellt_Projekt
 
 
                 string User = checkLoggin();
-                //Console.Write("Var god ange ditt användarnamn: ");
-                //string User = Console.ReadLine();
+
 
                 var index = Users.IndexOf(User);
 
@@ -47,11 +46,8 @@ namespace Inviduellt_Projekt
 
                         for (int i = 0; i < 3; i++)
                         {
-                            Console.Write("Var god ange din pinkod: ");
-                            string GivenPassword = Console.ReadLine();
-
-
-                            if (GivenPassword == Passwords[index])
+                            bool v = CheckPin(index);
+                            if (v == true)
                             {
                                 bool MenyBool = true;
                                 while (MenyBool)
@@ -62,10 +58,7 @@ namespace Inviduellt_Projekt
                                     Console.WriteLine("[3] Ta ut pengar");
                                     Console.WriteLine("[4] Logga ut");
                                     int.TryParse(Console.ReadLine(), out int choice);
-                                    if (User == "Daniel")
-                                    {
 
-                                    }
                                     switch (choice)
                                     {
 
@@ -134,14 +127,14 @@ namespace Inviduellt_Projekt
                                                     {
                                                         Console.WriteLine(BalanceDaniel[indexaccount]);
                                                         Console.WriteLine("Hur mycket vill du flytta? ");
-                                                        double amount1 = Convert.ToDouble(Console.ReadLine());
+                                                        double amount = Convert.ToDouble(Console.ReadLine());
                                                         try
                                                         {
                                                             Console.WriteLine("Vilket konto vill du flytta till?");
                                                             int fromAccount = Convert.ToInt32(Console.ReadLine());
                                                             Console.WriteLine("Här är de nya saldona");
-                                                            BalanceDaniel[indexaccount] = BalanceDaniel[indexaccount] - amount1;
-                                                            BalanceDaniel[fromAccount] = BalanceDaniel[fromAccount] + amount1;
+                                                            BalanceDaniel[indexaccount] = BalanceDaniel[indexaccount] - amount;
+                                                            BalanceDaniel[fromAccount] = BalanceDaniel[fromAccount] + amount;
                                                             Console.WriteLine(Daniel[indexaccount]);
                                                             Console.WriteLine(BalanceDaniel[indexaccount] + " kr");
                                                             Console.WriteLine(Daniel[fromAccount]);
@@ -323,7 +316,7 @@ namespace Inviduellt_Projekt
                                                         {
                                                             Console.WriteLine("Vilket konto vill du flytta till?");
                                                             int fromAccount = Convert.ToInt32(Console.ReadLine());
-                                                            Console.WriteLine("Här är de nya saldona");
+                                                            Console.WriteLine("Här är de nya saldona: ");
                                                             BalanceJennie[indexaccount] = BalanceJennie[indexaccount] - amount;
                                                             BalanceJennie[fromAccount] = BalanceJennie[fromAccount] + amount;
                                                             Console.WriteLine(Jennie[indexaccount]);
@@ -349,8 +342,6 @@ namespace Inviduellt_Projekt
 
                                             }
 
-
-
                                             break;
                                         case 3:
                                             Console.WriteLine("Ta ut pengar");
@@ -366,39 +357,26 @@ namespace Inviduellt_Projekt
                                                 {
                                                     Console.WriteLine("Vilket konto vill du ta ut pengar från? (ange siffran som står inom[])");
                                                     int indexaccount = Convert.ToInt32(Console.ReadLine());
-                                                    try
+                                                    double amount = WithDrawAmount();
+
+                                                    bool Pin = CheckPin(index);
+                                                    if (Pin == true)
                                                     {
-                                                        Console.WriteLine(BalanceDaniel[indexaccount]);
-                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
-                                                        double amount = Convert.ToDouble(Console.ReadLine());
-                                                        Console.Write("Var god ange din pinkod: ");
-                                                        string GivenPin = Console.ReadLine();
-
-
-                                                        if (GivenPin == Passwords[index])
-                                                        {
-                                                            Console.WriteLine("Här är de nya saldot: ");
-                                                            BalanceDaniel[indexaccount] = BalanceDaniel[indexaccount] - amount;
-                                                            Console.WriteLine(Daniel[indexaccount]);
-                                                            Console.WriteLine(BalanceDaniel[indexaccount] + " kr");
-                                                        }
-                                                        else
-                                                        {
-                                                            Console.WriteLine("Du angav fel pinkod");
-                                                        }
-                                                              
-
+                                                        Console.WriteLine("Här är de nya saldot: ");
+                                                        BalanceDaniel[indexaccount] = BalanceDaniel[indexaccount] - amount;
+                                                        Console.WriteLine(Daniel[indexaccount]);
+                                                        Console.WriteLine(Math.Round(BalanceDaniel[indexaccount], 2) + " kr");
                                                     }
-                                                    catch
+                                                    else
                                                     {
-                                                        Console.WriteLine("Du måste ange en giltig siffra");
+                                                        Console.WriteLine("Du angav fel pinkod");
                                                     }
+
                                                 }
                                                 catch
                                                 {
                                                     Console.WriteLine("Du måste ange en giltig siffra");
                                                 }
-
 
                                             }
                                             if (User == "Martin")
@@ -416,13 +394,19 @@ namespace Inviduellt_Projekt
                                                     try
                                                     {
                                                         Console.WriteLine(BalanceMartin[indexaccount]);
-                                                        Console.WriteLine("Hur mycket vill du ta ut? ");
-                                                        double amount = Convert.ToDouble(Console.ReadLine());
-                                                        Console.WriteLine("Här är de nya saldot");
-                                                        BalanceMartin[indexaccount] = BalanceMartin[indexaccount] - amount;
-                                                        Console.WriteLine(Martin[indexaccount]);
-                                                        Console.WriteLine(BalanceMartin[indexaccount] + " kr");
-                                            
+                                                        double amount = WithDrawAmount();
+                                                        bool Pin = CheckPin(index);
+                                                        if (Pin == true)
+                                                        {
+                                                            BalanceMartin[indexaccount] = BalanceMartin[indexaccount] - amount;
+                                                            Console.WriteLine(Martin[indexaccount]);
+                                                            Console.WriteLine(BalanceMartin[indexaccount] + " kr");
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.WriteLine("Du angav fel pinkod");
+                                                        }
+
                                                     }
                                                     catch
                                                     {
@@ -545,8 +529,9 @@ namespace Inviduellt_Projekt
                                             }
 
                                             break;
-                                        case 4:
+                                            case 4:
                                             Console.WriteLine("Logga ut");
+                                            
                                             MenyBool = false;
                                             MinBool = true;
                                             i = 3;
@@ -579,50 +564,41 @@ namespace Inviduellt_Projekt
         //Metod
         static string checkLoggin()
         {
-
-        //        var Users = new List<string> { "Daniel", "Martin", "Christian", "Neo", "Jennie" };//https://channel9.msdn.com/Series/CSharp-101/CSharp-Sort-Search-and-Index-Lists                
-        //        string[] Passwords = { "1234", "2345", "3456", "4567", "5678" };
         Console.Write("Var god ange ditt användarnamn: ");
         string User = Console.ReadLine();
         return User;
-        //        var index = Users.IndexOf(User);
-        //        bool MinBool = true;
-        //        while (MinBool)
-        //        {
-
-        //            foreach (var item in Users)
-        //            {
-        //                if (User == item)
-        //                {
-        //                    Console.WriteLine("Hej! " + Users[index]);
-
-        //                    for (int i = 0; i < 3; i++)
-        //                    {
-        //                        Console.Write("Var god ange din pinkod: ");
-        //                        string GivenPassword = Console.ReadLine();
-
-        //                        if (GivenPassword == Passwords[index])
-        //                        {
-        //                            break;
-        //                        }
-        //                        else if (GivenPassword != Passwords[index])
-        //                        {
-        //                            Console.WriteLine("Fel pinkod försök igen");
-        //                        }
-
-        //                    }
-        //                    MinBool = false;
-
-        //                }
-
-        //            }
-
-        //        }
-        //        return User;
-        //    }
-
         }
+        static bool CheckPin(int index)
+        {
+            string[] Passwords = { "1234", "2345", "3456", "4567", "5678" };
+            Console.Write("Var god ange din pinkod: ");
+            string GivenPassword = Console.ReadLine();
+            if (GivenPassword == Passwords[index])
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+          
+        }
+        static double WithDrawAmount()
+        {
 
-        
+                try
+                {
+                    Console.WriteLine("Hur mycket vill du ta ut? ");
+                    double amount = Convert.ToDouble(Console.ReadLine());
+                    return amount;
+                }
+                catch
+                {
+                    Console.WriteLine("Du måste ange en giltig siffra");
+                return 0;
+                }
+
+            
+        }
     }
 }

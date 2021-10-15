@@ -10,8 +10,8 @@ namespace Inviduellt_Projekt
             Console.WriteLine("Hej! Välkommen till banken!");
 
             //List with alla users
-            var Users = new List<string> { "Daniel", "Martin", "Christian", "Neo", "Jennie" };//https://channel9.msdn.com/Series/CSharp-101/CSharp-Sort-Search-and-Index-Lists                
-            //Pin inside method checkPin
+            var Users = new List<string> { "Daniel", "Martin", "Christian", "Neo", "Jennie" };                
+            //Pincode inside method checkPin
 
             string[] Daniel = { "Lönekonto", "Sparkonto", "Buffert" };
             double[] BalanceDaniel = { 1235.54, 1531, 1562 };
@@ -19,27 +19,24 @@ namespace Inviduellt_Projekt
             string[] Martin = { "Lönekonto", "Sparkonto", "Buffert", "Pension" };
             double[] BalanceMartin = { 486.12, 145861, 15610, 14 };
 
-            string[] Christian = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceChristian = { 516.32, 1561, 1515.61 };
+            string[] Christian = { "Lönekonto", "Sparkonto", "Buffert","Spel", "Pension"};
+            double[] BalanceChristian = { 516.32, 1561, 1515.61, 5313,50, 300 };
 
-            string[] Neo = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceNeo = { 5846.23, 186146, 15136 };
+            string[] Neo = { "Lönekonto", "Sparkonto"  };
+            double[] BalanceNeo = { 5846.23, 186146 };
 
-            string[] Jennie = { "Lönekonto", "Sparkonto", "Buffert" };
-            double[] BalanceJennie = { 1353.15, 15864, 1561, 23.25 };
+            string[] Jennie = { "Lönekonto" };
+            double[] BalanceJennie = { 1353.15 };
 
             bool MinBool = true;
             while (MinBool)
             {
-
-
                 string User = checkLoggin();
-
-
                 var index = Users.IndexOf(User);
 
                 foreach (var item in Users)
                 {
+
                     if (User == item)
                     {
                         Console.WriteLine("Hej! " + Users[index]);
@@ -106,6 +103,7 @@ namespace Inviduellt_Projekt
                                                     Console.WriteLine(" " + BalanceJennie[j] + " kr");
                                                 }
                                             }
+                                            //This method clears the console window and makes the enter key the only key that you can hit to return to menu.
                                             ReturnToMenu();
                                             break;
                                         case 2:
@@ -341,6 +339,7 @@ namespace Inviduellt_Projekt
 
 
                                             }
+                                            //This method clears the console window and makes the enter key the only key that you can hit to return to menu.
                                             ReturnToMenu();
                                             break;
                                         case 3:
@@ -414,7 +413,7 @@ namespace Inviduellt_Projekt
                                                             
                                                             BalanceMartin[indexaccount] = BalanceMartin[indexaccount] - amount;
                                                             Console.WriteLine(Martin[indexaccount]);
-                                                            Console.WriteLine(BalanceMartin[indexaccount] + " kr");
+                                                            Console.WriteLine(Math.Round(BalanceMartin[indexaccount],2) + " kr");
                                                         }
                                                         else
                                                         {
@@ -457,7 +456,7 @@ namespace Inviduellt_Projekt
                                                             Console.WriteLine("Här är de nya saldot");
                                                             BalanceChristian[indexaccount] = BalanceChristian[indexaccount] - amount;
                                                             Console.WriteLine(Christian[indexaccount]);
-                                                            Console.WriteLine(BalanceChristian[indexaccount] + " kr");
+                                                            Console.WriteLine(Math.Round(BalanceChristian[indexaccount],2) + " kr");
                                                         }
                                                         else
                                                         {
@@ -499,7 +498,7 @@ namespace Inviduellt_Projekt
                                                             Console.WriteLine("Här är de nya saldot");
                                                             BalanceNeo[indexaccount] = BalanceNeo[indexaccount] - amount;
                                                             Console.WriteLine(Neo[indexaccount]);
-                                                            Console.WriteLine(BalanceNeo[indexaccount] + " kr");
+                                                            Console.WriteLine(Math.Round(BalanceNeo[indexaccount],2) + " kr");
                                                         }
                                                         else
                                                         {
@@ -561,22 +560,22 @@ namespace Inviduellt_Projekt
 
 
                                             }
+                                            //This method clears the console window and makes the enter key the only key that you can hit to return to menu.  
                                             ReturnToMenu();
                                             break;
-                                            case 4:
+
+                                        case 4:
                                             Console.WriteLine("Logga ut");
-                                            
                                             MenyBool = false;
                                             MinBool = true;
                                             i = 3;
                                             break;
+
                                         default:
                                             Console.WriteLine("Du har angivit ett ogiltigt menyval");
                                             break;
                                     }
-
                                 }
-
                             }
                             else
                             {
@@ -589,17 +588,15 @@ namespace Inviduellt_Projekt
                         }
 
                         }
-                        
                     }
                 }
-            }
+             }
         }
-    
-        //Metod
         static string checkLoggin()
-        {
+        { 
         Console.Write("Var god ange ditt användarnamn: ");
         string User = Console.ReadLine();
+   
         return User;
         }
         static bool CheckPin(int index)
@@ -617,12 +614,10 @@ namespace Inviduellt_Projekt
             }
 
         }
-
-        
         static void ReturnToMenu()
         {
-            Console.WriteLine("Klicka enter för att komma till huvudmenyn");
-            Console.ReadKey();
+            Console.WriteLine("Klicka på Enter för att komma till huvudmenyn");
+            while (Console.ReadKey(true).Key !=ConsoleKey.Enter);
             Console.Clear();
         }
     }

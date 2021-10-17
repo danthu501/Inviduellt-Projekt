@@ -31,14 +31,15 @@ namespace Inviduellt_Projekt
             bool MinBool = true;
             while (MinBool)
             {
-                string User = checkLoggin();
+                string User = GetUsername();
                 var index = Users.IndexOf(User);
-
+ 
                 foreach (var item in Users)
                 {
 
                     if (User == item)
                     {
+
                         Console.WriteLine("Hej! " + Users[index]);
 
                         for (int i = 0; i < 3; i++)
@@ -569,6 +570,7 @@ namespace Inviduellt_Projekt
                                             MenyBool = false;
                                             MinBool = true;
                                             i = 3;
+                                            Console.Clear();
                                             break;
 
                                         default:
@@ -589,14 +591,15 @@ namespace Inviduellt_Projekt
 
                         }
                     }
-                }
-             }
+                 }
+            }
         }
-        static string checkLoggin()
+        static string GetUsername()
         { 
         Console.Write("Var god ange ditt användarnamn: ");
         string User = Console.ReadLine();
-   
+         
+       
         return User;
         }
         static bool CheckPin(int index)
@@ -620,5 +623,6 @@ namespace Inviduellt_Projekt
             while (Console.ReadKey(true).Key !=ConsoleKey.Enter);
             Console.Clear();
         }
+
     }
 }
